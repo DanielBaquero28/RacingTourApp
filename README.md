@@ -6,6 +6,6 @@ Download it here: <strong><a href="">Racing Tour</a></strong>
 <br>
 <br>
 <footer>
-Made by: Daniel Baquero - <strong><a href="https://github.com/DanielBaquero28">Github</a> - <a href="https://www.linkedin.com/in/daniel-alejandro-baquero-arias-106a45195/">Linkedin</a></strong>
+Made by: <strong>Daniel Baquero - <a href="https://github.com/DanielBaquero28">Github</a> - <a href="https://www.linkedin.com/in/daniel-alejandro-baquero-arias-106a45195/">Linkedin</a></strong>
 </footer>
 </html>
