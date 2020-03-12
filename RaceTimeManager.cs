@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;7
+using UnityEngine.UI;
 
 public class RaceTimeManager : MonoBehaviour
 {
