@@ -38,7 +38,7 @@ public class LapComplete : MonoBehaviour
         LapTimeManager.SecondCount = 0;
         LapTimeManager.MinuteCount = 0;
         LapTimeManager.MilliCount = 0;
-        HalfLapTrig.SetActive(true);
+        HalfLapTrig.SetActive(false);
         LapCompleteTrig.SetActive(false);
 
     }
