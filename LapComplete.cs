@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.Vehicles.Car;
+using UnityEngine.SceneManagement;
 
 public class LapComplete : MonoBehaviour
 {
@@ -12,24 +14,18 @@ public class LapComplete : MonoBehaviour
     public GameObject SecondDisplay;
     public GameObject MiliDisplay;
 
-    public int LapDone;
-    public float RawTimeLocal;
+    public int LapDone = 0;
+    public float RawTimeLast;
 
     public GameObject RaceFinish;
 
-    void Update()
-    {
-        if (LapDone == 1)
-        {
-            RaceFinish.SetActive(true);
-        }
-    }
+    public int RawLastSec;
 
     void OnTriggerEnter()
     {
         LapDone += 1;
-        RawTimeLocal = PlayerPrefs.GetFloat("RawTime");
-        if (LapTimeManager.RawTime <= RawTimeLocal)
+        RawTimeLast = PlayerPrefs.GetFloat("RawTime");
+        if (LapTimeManager.RawTime <= RawTimeLast)
         {
             if (LapTimeManager.SecondCount <= 9)
             {
@@ -49,19 +45,45 @@ public class LapComplete : MonoBehaviour
             }
 
             MiliDisplay.GetComponent<Text>().text = "" + LapTimeManager.MilliCount;
+            PlayerPrefs.SetInt("MinSave", LapTimeManager.MinuteCount);
+            PlayerPrefs.SetInt("SecSave", LapTimeManager.SecondCount);
+            PlayerPrefs.SetFloat("MilliSave", 0);
+            PlayerPrefs.SetFloat("RawTime", LapTimeManager.RawTime);
         }
-
-        PlayerPrefs.SetInt("MinSave", LapTimeManager.MinuteCount);
-        PlayerPrefs.SetInt("SecSave", LapTimeManager.SecondCount);
-        PlayerPrefs.SetFloat("MilliSave", LapTimeManager.MilliCount);
-        PlayerPrefs.SetFloat("RawTime", LapTimeManager.RawTime);
+	else
+	{
+	    PlayerPrefs.SetFloat("RawTime", RawTimeLast);
+            PlayerPrefs.SetInt("MinSave", LapTimeManager.MinuteCount);
+            RawLastSec = (int)RawTimeLast;
+            PlayerPrefs.SetInt("SecSave", RawLastSec);
+            PlayerPrefs.SetFloat("MilliSave", 0);
+	}
 
         LapTimeManager.SecondCount = 0;
         LapTimeManager.MinuteCount = 0;
         LapTimeManager.MilliCount = 0;
+	LapTimeManager.RawTime = 0.0f;
 
         HalfLapTrig.SetActive(false);
         LapCompleteTrig.SetActive(false);
 
+    }
+
+    void Update()
+    {
+        if (LapDone == 1)
+        {
+            RaceFinish.SetActive(true);
+        }
+
+	if (LapTimeManager.RawTime >= 60.5f)
+        {
+            SceneManager.LoadScene(3);
+            RaceFinish.SetActive(true);
+            LapTimeManager.MilliCount = 0.0f;
+            LapTimeManager.SecondCount = 0;
+            LapTimeManager.MinuteCount = 0;
+            LapTimeManager.RawTime = 0.0f;
+        }
     }
 }

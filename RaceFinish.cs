@@ -14,6 +14,10 @@ public class RaceFinish : MonoBehaviour
     public AudioSource FinishMusic;
     public GameObject LapTimeScript;
 
+    public GameObject RetryButton;
+    public GameObject MainMenuButton;
+    public GameObject YouWinText;
+
     void OnTriggerEnter()
     {
         this.GetComponent<BoxCollider>().enabled = false;
@@ -28,6 +32,9 @@ public class RaceFinish : MonoBehaviour
         ViewModes.SetActive(false);
         FinishMusic.Play();
         LapTimeScript.GetComponent<LapTimeManager>().enabled = false;
+	RetryButton.SetActive(false);
+	MainMenuButton.SetActive(true);
+	YouWinText.SetActive(true);
     }
 
 }
