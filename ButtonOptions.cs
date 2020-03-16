@@ -34,6 +34,16 @@ public class ButtonOptions : MonoBehaviour
         SceneManager.LoadScene(4);
     }
 
+    public void SignUp()
+    {
+	SceneManager.LoadScene(5);
+    }
+
+    public void LoginUser()
+    {
+	SceneManager.LoadScene(6);
+    }
+
     public void Quit()
     {
         Application.Quit();
