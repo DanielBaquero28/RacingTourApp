@@ -25,7 +25,6 @@ public class AuthController : MonoBehaviour
 
     public void Login()
     {
-        //Flag = false;
         FirebaseAuth.DefaultInstance.SignInWithEmailAndPasswordAsync(EmailInput.text, PasswordInput.text).ContinueWith(task =>
         {
             if (task.IsCanceled)
@@ -61,11 +60,12 @@ public class AuthController : MonoBehaviour
             DisplayError(msg);
             SignUpSuccessful.SetActive(false);
         }
+
         else
         {
             ErrorDisplay.SetActive(false);
-            //SignUpSuccessful.SetActive(true);
         }
+
         if (NumClickTwo == 0)
         {
             DoubleCheck.SetActive(true);
@@ -87,12 +87,11 @@ public class AuthController : MonoBehaviour
 
     public void SignUpUser()
     {
-        print("Numclick: " + NumClick);
-        print("SignUpUser01: " + Flag);
         RetrieveEmail = EmailInput;
         if (EmailInput.text.Equals("") || PasswordInput.text.Equals(""))
         {
-            ErrorDisplay.SetActive(true);
+            Flag = true;
+	    ErrorDisplay.SetActive(true);
             ErrorDisplay.GetComponent<Text>().text = "PLEASE FILL OUT THE FORM";
             return;
         }
@@ -105,7 +104,6 @@ public class AuthController : MonoBehaviour
                 ErrorMessage = exep.ErrorCode + "";
                 GetErrorMessage((AuthError)exep.ErrorCode);
                 SignUpSuccessful.SetActive(false);
-                //DisplayError((AuthError)exep.ErrorCode);
                 return;
             }
 
@@ -114,19 +112,18 @@ public class AuthController : MonoBehaviour
                 Flag = true;
                 Firebase.FirebaseException exep = task.Exception.Flatten().InnerExceptions[0] as Firebase.FirebaseException;
                 GetErrorMessage((AuthError)exep.ErrorCode);
-                //DisplayError(exep.ErrorCode);
                 SignUpSuccessful.SetActive(false);
                 return;
             }
-            //print("SignUpUserMiddle(After isFaulted): " + Flag);
+
             if (task.IsCompleted)
             {
                 Flag = false;
                 Firebase.Auth.FirebaseUser newUser = task.Result;
-                //SignUpSuccessful.SetActive(true);
                 print("User signed up successfully");
             }
         });
+
         if (Flag == true)
         {
             print(msg);
@@ -136,8 +133,8 @@ public class AuthController : MonoBehaviour
         else
         {
             ErrorDisplay.SetActive(false);
-            //SignUpSuccessful.SetActive(true);
         }
+
         if (NumClick == 0)
         {
             DoubleCheck.SetActive(true);
@@ -154,7 +151,7 @@ public class AuthController : MonoBehaviour
                 SignUpSuccessful.SetActive(false);
             }
         }
-        //print("SignUpUser02: " + Flag);
+
         NumClick += 1;
     }
 
