@@ -3,23 +3,24 @@ using System;
 [Serializable]
 public class Player
 {
-    public int Id;
+    public Guid Id;
     public string Name;
     public string Email;
     public string Username;
-    public string Password;
+
+    public float BestTime;
 
     public Player()
     {
 
     }
 
-    public Player(int id, string name, string email, string username, string password)
+    public Player(Guid id, string name, string email, string username, float bestTime)
     {
         Id = id;
         Name = name;
         Email = email;
         Username = username;
-        Password = password;
+        BestTime = bestTime;
     }
 }
