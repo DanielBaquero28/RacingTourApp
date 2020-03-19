@@ -34,6 +34,7 @@ public class LapTimeManager : MonoBehaviour
 		{
 			SecondBox.GetComponent<Text>().text = "0" + SecondCount + ".";
 		}
+
 		else
 		{
 			SecondBox.GetComponent<Text>().text = "" + SecondCount + ".";
@@ -49,10 +50,10 @@ public class LapTimeManager : MonoBehaviour
 		{
 			MinuteBox.GetComponent<Text>().text = "0" + MinuteCount + ":";
 		}
+
 		else
 		{
 			MinuteBox.GetComponent<Text>().text = "" + MinuteCount + ":";
 		}
-
 	}
 }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FinishCamera : MonoBehaviour
-{
-	void Update()
-	{
-		transform.Rotate(0,1,0,Space.World);
-	}
+{ 
+    void Update()
+    {
+        transform.Rotate(0,1,0,Space.World);   
+    }
 }

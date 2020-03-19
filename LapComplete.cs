@@ -20,6 +20,7 @@ public class LapComplete : MonoBehaviour
     public GameObject RaceFinish;
 
     public int RawLastSec;
+    public static float BestTime;
 
     void OnTriggerEnter()
     {
@@ -50,19 +51,20 @@ public class LapComplete : MonoBehaviour
             PlayerPrefs.SetFloat("MilliSave", 0);
             PlayerPrefs.SetFloat("RawTime", LapTimeManager.RawTime);
         }
-	else
-	{
-	    PlayerPrefs.SetFloat("RawTime", RawTimeLast);
+        else
+        {
+            PlayerPrefs.SetFloat("RawTime", RawTimeLast);
             PlayerPrefs.SetInt("MinSave", LapTimeManager.MinuteCount);
             RawLastSec = (int)RawTimeLast;
             PlayerPrefs.SetInt("SecSave", RawLastSec);
             PlayerPrefs.SetFloat("MilliSave", 0);
-	}
+        }
 
+        BestTime = PlayerPrefs.GetFloat("RawTime");
         LapTimeManager.SecondCount = 0;
         LapTimeManager.MinuteCount = 0;
         LapTimeManager.MilliCount = 0;
-	LapTimeManager.RawTime = 0.0f;
+        LapTimeManager.RawTime = 0.0f;
 
         HalfLapTrig.SetActive(false);
         LapCompleteTrig.SetActive(false);
@@ -76,9 +78,9 @@ public class LapComplete : MonoBehaviour
             RaceFinish.SetActive(true);
         }
 
-	if (LapTimeManager.RawTime >= 60.5f)
+        if (LapTimeManager.RawTime >= 60.5f)
         {
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(7);
             RaceFinish.SetActive(true);
             LapTimeManager.MilliCount = 0.0f;
             LapTimeManager.SecondCount = 0;

@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 using Firebase;
@@ -8,15 +11,16 @@ using Firebase.Unity.Editor;
 
 public class DataBridge : MonoBehaviour
 {
-    public Text NameInput, EmailInput, UsernameInput, PasswordInput;
+    public Text NameInput, UsernameInput;
 
     private Player player;
 
-    
+
     private string PlayerDataUrl = "https://racing-tour-app.firebaseio.com/";
     private DatabaseReference DataBaseRef;
+    private Guid guid;
+    private bool AuthErrorLocal;
 
-    private int id = 0;
 
     void Start()
     {
@@ -26,19 +30,28 @@ public class DataBridge : MonoBehaviour
     // Saves player's data
     public void SaveData()
     {
-        if (UsernameInput.text.Equals("") && EmailInput.text.Equals("") && NameInput.text.Equals("") && PasswordInput.text.Equals(""))
+        HandleAuthError();
+        if (NameInput.text.Equals("") && UsernameInput.text.Equals("") && AuthController.RetrieveEmail.text.Equals(""))
         {
-            print("No data found");
+            print("No data to store");
             return;
         }
-        // Created an instance
-        player = new Player(id, NameInput.text, EmailInput.text, UsernameInput.text, PasswordInput.text);
-        // Storing the object as a json
-        string JsonData = JsonUtility.ToJson(player);
+         // Creating a Globally Unique ID
+         guid = Guid.NewGuid();
 
-        // Creating a unique id for each user and storing it as a raw json
-        DataBaseRef.Child("User" + id).SetRawJsonValueAsync(JsonData);
-        id += 1;
+        if (AuthErrorLocal == true)
+        {
+            //DataBaseRef.Child("User" + guid).removeValue();
+        }
+        else
+        {
+            // Created an instance
+            player = new Player(guid, NameInput.text, AuthController.RetrieveEmail.text, UsernameInput.text, LapComplete.BestTime);
+            // Storing the object as a json
+            string JsonData = JsonUtility.ToJson(player);
+            // Adding the data to the database by creating a child
+            DataBaseRef.Child("User" + guid).SetRawJsonValueAsync(JsonData);
+        }
     }
 
     // Loads player's data
@@ -73,24 +86,131 @@ public class DataBridge : MonoBehaviour
                     string childData = child.GetRawJsonValue();
                     Player eachField = JsonUtility.FromJson<Player>(childData);
 
-                    // Ready to retrieve any of it's childs easily
+                    //Ready to retrieve any of it's childs easily
 
-                    /* print("The Player's id is: " + eachField.Id);
-                    print("The Player's name is : " + eachField.Name);
-                    print("The Player's email is: " + eachField.Email);
-                    print("The Player's username is: " + eachField.Username);
-                    print("The Player's password is: " + eachField.Password); */
+                    //print("The Player's id is: " + eachField.Id);
+                    //print("The Player's name is : " + eachField.Name);
+                    //print("The Player's email is: " + eachField.Email);
+                    //print("The Player's username is: " + eachField.Username);
+                    //print("The Player's password is: " + eachField.Password);
                 }
             }
         });
     }
 
+    public void HandleAuthError()
+    {
+        List<string> myList;
+        FirebaseDatabase.DefaultInstance.GetReferenceFromUrl(PlayerDataUrl).GetValueAsync().ContinueWith(task =>
+        {
+            if (task.IsCanceled)
+            {
+                Firebase.FirebaseException exep = task.Exception.Flatten().InnerExceptions[0] as Firebase.FirebaseException;
+                GetErrorMessage(exep.ErrorCode);
+                return;
+            }
+
+            if (task.IsFaulted)
+            {
+                Firebase.FirebaseException exep = task.Exception.Flatten().InnerExceptions[0] as Firebase.FirebaseException;
+                GetErrorMessage(exep.ErrorCode);
+                return;
+            }
+            
+           
+                // DataSnapshot is an object that stores all of the player's data
+                DataSnapshot SnapshotData = task.Result;
+
+                string PlayerData = SnapshotData.GetRawJsonValue();
+                print(PlayerData);
+
+                myList = new List<string>();
+
+                foreach (var child in SnapshotData.Children)
+                {
+                    string childData = child.GetRawJsonValue();
+                    Player eachField = JsonUtility.FromJson<Player>(childData);
+
+                    if (eachField.Email != "")
+                    {
+                        myList.Add(eachField.Email);
+                    }
+
+                    foreach(string s in myList)
+                    {
+                        AuthErrorLocal = false;
+                        Console.WriteLine(s);
+                        if (s == eachField.Email)
+                        {
+                            AuthErrorLocal = true;
+                            // break;
+                        }
+                        else
+                        {
+                            AuthErrorLocal = false;
+                        }
+                    }
+                }
+
+                
+            
+        });
+    }
+
+    /*public void SaveBestTime()
+    {
+        FirebaseDatabase.DefaultInstance.GetReferenceFromUrl(PlayerDataUrl).GetValueAsync().ContinueWith(task =>
+        {
+        if (task.IsCanceled)
+        {
+            Firebase.FirebaseException exep = task.Exception.Flatten().InnerExceptions[0] as Firebase.FirebaseException;
+            GetErrorMessage(exep.ErrorCode);
+            return;
+        }
+
+        if (task.IsFaulted)
+        {
+            Firebase.FirebaseException exep = task.Exception.Flatten().InnerExceptions[0] as Firebase.FirebaseException;
+            GetErrorMessage(exep.ErrorCode);
+            return;
+        }
+
+
+        // DataSnapshot is an object that stores all of the player's data
+        DataSnapshot SnapshotData = task.Result;
+
+        string PlayerData = SnapshotData.GetRawJsonValue();
+        print(PlayerData);
+
+
+        foreach (var child in SnapshotData.Children)
+        {
+            string childData = child.GetRawJsonValue();
+            Player eachField = JsonUtility.FromJson<Player>(childData);
+
+            DatabaseReference DataBaseBest;
+            string EmailKey = "";
+
+            if (eachField.Email == AuthController.RetrieveEmail.ToString())
+            {
+                   DataBaseBest.getParent();
+                   
+
+                    EmailKey = DataBaseBest.getKey();
+
+                    DataBaseBest = DataBaseRef.Child(EmailKey);
+                    DataBaseBest.Child("Email").SetValue(LapComplete.BestTime);
+                }
+            }
+
+
+
+        });
+    }
+    */
     void GetErrorMessage(int ErrorCode)
     {
-        int errorCode;
-        errorCode = ErrorCode;
-
-        switch (errorCode)
+        switch (ErrorCode)
         {
             case (-1):
                 print("Internal use");

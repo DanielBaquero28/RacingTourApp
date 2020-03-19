@@ -20,15 +20,15 @@ public class RaceTimeManager : MonoBehaviour
         MiliCount = PlayerPrefs.GetFloat("MiliSave");
         if (MinCount < 10)
         {
-            MinDisplay.GetComponent<Text>().text = "0" + MinCount + ":";
+             MinDisplay.GetComponent<Text>().text = "0" + MinCount + ":";
         }
         else
         {
-            MinDisplay.GetComponent<Text>().text = MinCount + ":";
+             MinDisplay.GetComponent<Text>().text = MinCount + ":";
         }
         if (SecCount < 10)
         {
-            SecDisplay.GetComponent<Text>().text = "0" + SecCount + ".";
+             SecDisplay.GetComponent<Text>().text = "0" + SecCount + ".";
         }
         else
         {
