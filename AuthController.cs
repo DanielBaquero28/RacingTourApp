@@ -162,9 +162,9 @@ public class AuthController : MonoBehaviour
     {
         if (FirebaseAuth.DefaultInstance.CurrentUser != null)
         {
-            FirebaseAuth.DefaultInstance.SignOut();
-            ErrorDisplay.SetActive(true);
             ErrorDisplay.GetComponent<Text>().text = "Logged out successfully";
+	    ErrorDisplay.SetActive(true);
+	    FirebaseAuth.DefaultInstance.SignOut();
             print("Logged out successfully");
         }
     }
