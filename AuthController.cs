@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Firebase.Auth;
 
+// In charge of managing the user authentication system
 public class AuthController : MonoBehaviour
 {
     public Text EmailInput;

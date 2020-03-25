@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// In charge of button selection and scene management
 public class ButtonOptions : MonoBehaviour
 {
     public void PlayGame()

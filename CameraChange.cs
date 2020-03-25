@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// In charge of managing the camera viewmode
 public class CameraChange : MonoBehaviour
 {
     public GameObject NormalCam;

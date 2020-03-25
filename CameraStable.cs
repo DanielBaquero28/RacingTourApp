@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// In charge of keeping the camera stable no matter what
 public class CameraStable : MonoBehaviour
 {
     public GameObject Car;

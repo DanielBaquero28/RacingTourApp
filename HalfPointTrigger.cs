@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Manages triggers when the halfpoint of the race is reached 
 public class HalfPointTrigger : MonoBehaviour
 {
     public GameObject LapCompleteTrigger;
