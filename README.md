@@ -15,9 +15,10 @@ You can download the app in the Landing Page
 </ol>
 <p align="center">![Racing Tour Game](/images/racingtourss.jpg)</p>
 <h2>Usage</h2>
-In the app you will find exactly what you have to do in each step
-<br>
-To move the car use the arrow keys or use W(accelerate), A(Left), S(Brake), D(Right) keys.
+<ul>
+<li>In the app you will find exactly what you have to do in each step</li>
+<li>To move the car use the arrow keys or use W(accelerate), A(Left), S(Brake), D(Right) keys.</li>
+</ul>
 <br>
 <h2>Contributing</h2>
 Please refer to each project's style and contribution guidelines for submitting patches and additions. In general, we follow the "fork-and-pull" Git workflow.
