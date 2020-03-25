@@ -8,10 +8,10 @@ You can download the app in the Landing Page
 <strong>Landing Page: </strong><a href="https://835407.wixsite.com/racingtour">Click here</a>
 <h2>Installation</h2>
 <ol>
-<li>Go the Landing Page, the link is above</li>
-<li>Click on "GET THE APP", that will make the download of the app start</li>
-<li>Wait until the download is complete, then open the folder where it was downloaded</li>
-<li>Click on the file with the Unity icon, and enjoy !</li>
+<li>Head to the landing of Racing Tour, which is found above</li>
+<li>Click on the "GET THE APP" button, which will start downloading the app</li>
+<li>When the download is complete, unzip RacingTourBuildApp.rar</li>
+<li>Click on the Racing Tour.exe file, and enjoy !</li>
 </ol>
 <img src="/images/racingtourss.jpeg" alt="Racing Tour In-Game" align="middle">
 <h2>Usage</h2>
@@ -24,6 +24,7 @@ You can download the app in the Landing Page
 Please refer to each project's style and contribution guidelines for submitting patches and additions. In general, we follow the "fork-and-pull" Git workflow.
 <br>
 <ol>
+<br>
 <li>Fork the repo on GitHub</li>
 <li>Clone the project to your own machine</li>
 <li>Commit changes to your own branch</li>
