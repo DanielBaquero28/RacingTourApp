@@ -13,7 +13,7 @@ You can download the app in the Landing Page
 <li>Wait until the download is complete, then open the folder where it was downloaded</li>
 <li>Click on the file with the Unity icon, and enjoy !</li>
 </ol>
-<p align="center">![Racing Tour Game](/images/racingtourss.jpg)</p>
+<p align="center">![Racing Tour Game](/images/racingtourss.jpeg)</p>
 <h2>Usage</h2>
 <ul>
 <li>In the app you will find exactly what you have to do in each step</li>
