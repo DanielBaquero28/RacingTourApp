@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// In charge of managing the countdown of the race
 public class CountDown : MonoBehaviour
 {
     public GameObject Countdown;

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityStandardAssets.Vehicles.Car;
 using UnityEngine.SceneManagement;
 
+// Manages BestTime and triggers when the lap has been completed
 public class LapComplete : MonoBehaviour
 {
     public GameObject LapCompleteTrig;

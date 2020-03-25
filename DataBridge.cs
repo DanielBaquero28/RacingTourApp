@@ -9,6 +9,7 @@ using Firebase;
 using Firebase.Database;
 using Firebase.Unity.Editor;
 
+// In charge of managing the Database in Google Firebase
 public class DataBridge : MonoBehaviour
 {
     public Text NameInput, UsernameInput;
@@ -157,7 +158,8 @@ public class DataBridge : MonoBehaviour
         });
     }
 
-    /*public void SaveBestTime()
+    // This method is in beta and will be used to save the user's best time
+    /* public void SaveBestTime()
     {
         FirebaseDatabase.DefaultInstance.GetReferenceFromUrl(PlayerDataUrl).GetValueAsync().ContinueWith(task =>
         {
@@ -206,8 +208,8 @@ public class DataBridge : MonoBehaviour
 
 
         });
-    }
-    */
+    } */
+
     void GetErrorMessage(int ErrorCode)
     {
         switch (ErrorCode)

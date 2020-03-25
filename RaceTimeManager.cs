@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Displays the BestTime race of the user
 public class RaceTimeManager : MonoBehaviour
 {
     public int MinCount;

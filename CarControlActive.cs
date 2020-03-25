@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.Vehicles.Car;
 
+// In charge of setting the CarControl Script Active when the Countdown is finished
 public class CarControlActive : MonoBehaviour
 {
     public GameObject CarControl;

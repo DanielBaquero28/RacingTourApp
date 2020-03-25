@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Vehicles.Car;
 
+// Manages actions that take place when the user has won
 public class RaceFinish : MonoBehaviour
 {
     public GameObject MyCar;

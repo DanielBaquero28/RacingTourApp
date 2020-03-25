@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
+// Manages the time of the current lap
 public class LapTimeManager : MonoBehaviour
 {
 	public static int MinuteCount;
