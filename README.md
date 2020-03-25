@@ -1,6 +1,6 @@
 <h1>Project: Racing Tour</h1>
 <p><strong>Racing Tour is a racing game made for those to seek speed and lack of fear to fail on their first attempts because of it's game mode. Have fun !</strong></p>
-<img src="racingtourlogo.png" alt="Racing Tour Logo" align="middle">
+<img src="/images/racingtourlogo.png" alt="Racing Tour Logo" align="middle">
 <body>
 <h2>Introduction</h2>
 You can download the app in the Landing Page
@@ -13,7 +13,7 @@ You can download the app in the Landing Page
 <li>Wait until the download is complete, then open the folder where it was downloaded</li>
 <li>Click on the file with the Unity icon, and enjoy !</li>
 </ol>
-<img src="racingtourss.jpeg" alt="Racing Tour In-Game align="middle">
+<img src="/images/racingtourss.jpeg" alt="Racing Tour In-Game" align="middle">
 <h2>Usage</h2>
 <ul>
 <li>In the app you will find exactly what you have to do in each step</li>
