@@ -9,9 +9,11 @@ You can download the app in the Landing Page
 <h2>Installation</h2>
 <ol>
 <li>Head to the landing of Racing Tour, which is found above</li>
-<li>Click on the "GET THE APP" button, which will start downloading the app</li>
-<li>When the download is complete, unzip RacingTourBuildApp.rar</li>
-<li>Click on the Racing Tour.exe file, and enjoy !</li>
+<li>Click on the "GET THE APP" button, which will head to the RacingTourBuildApp.rar file in OneDrive</li>
+<li>Click on the folder and download it</li>
+<li>After downloading it, unzip the file</li>
+<li>For last, click on the folder saved in your PC and open the Racing Tour.exe file</li>
+<li>Enjoy the game!</li>
 </ol>
 <img src="/images/racingtourss.jpeg" alt="Racing Tour In-Game" align="middle">
 <h2>Usage</h2>
