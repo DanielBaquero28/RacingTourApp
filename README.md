@@ -33,6 +33,10 @@ Please refer to each project's style and contribution guidelines for submitting 
 <li>Submit a Pull request so that we can review your changes</li>
 </ol>
 NOTE: Be sure to merge the latest from "upstream" before making a pull request! Thanks in advance.
+<h2>Related Projects</h2>
+<p>
+There are no related projects yet, this is the first type of project I've done so far.
+</p>
 <h2>Story behind Racing Tour</h2>
 <h3>Why did I create it ?</h3>
 <p>
